@@ -126,7 +126,7 @@ Sigue estos pasos para poder comenzar a desarrollar o probar los programas del r
     Si los revisores solicitan cambios, actualiza tu rama y el Pull Request.
    
 ## Notas importantes
-- **Puedes trabajar directamente en la rama de cada unidad libremente.  
+- Puedes trabajar directamente en la rama de cada unidad libremente.  
 - Antes de empezar a desarrollar asegurate de sincronizar tu repositorio local con el repositorio remoto:  
   ```bash
   git checkout [rama_local]
