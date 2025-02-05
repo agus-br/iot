@@ -49,6 +49,15 @@ Antes de comenzar, asegúrate de tener los siguientes programas instalados en tu
     - [Descargar Arduino IDE](https://www.arduino.cc/en/software)
     - Librerías necesarias:
       * **Servo** by Michael Margolis, Arduino.
+
+6. **Microcontrolador Arduino (puede ser genérico)**:
+    - Componentes y materiales necesarios:
+      * Breadboard.
+      * Jumpers.
+      * Sensor ultrasónico HC-SR04
+      * Resistores de 220 homs
+      * LED's de varios colores
+      * Relevador (con placa preferiblemente)
 ---
 
 ## Instalación
