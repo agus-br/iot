@@ -25,9 +25,9 @@ Antes de comenzar, asegúrate de tener los siguientes programas instalados en tu
       ```
 2. **Pip (gestor de paquetes de Python, generalmente se instala junto con python)**:
      - Puedes revisar la instalación con el sigueinte comando:
-      ```bash
-      pip --version
-      ```
+       ```bash
+       pip --version
+       ```
 3. **Tkinter (librería de desarrollo de GUI's en python, generalmente se instala junto con python)**:
     - Puedes revisar la instalación con el sigueinte comando:
       ```bash
@@ -49,6 +49,15 @@ Antes de comenzar, asegúrate de tener los siguientes programas instalados en tu
     - [Descargar Arduino IDE](https://www.arduino.cc/en/software)
     - Librerías necesarias:
       * **Servo** by Michael Margolis, Arduino.
+
+6. **Microcontrolador Arduino (puede ser genérico)**:
+    - Componentes y materiales necesarios:
+      * Breadboard.
+      * Jumpers.
+      * Sensor ultrasónico HC-SR04
+      * Resistores de 220 homs
+      * LED's de varios colores
+      * Relevador (con placa preferiblemente)
 ---
 
 ## Instalación
