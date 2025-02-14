@@ -7,11 +7,9 @@ const int yellow = 9; // LED amarillo
 const int green = 8; // LED verde
 
 const int rele = 12; // Pin del relevador 
-const int pinTest = 13; // Pin de prueba 
-
 
 void setup() {
-
+  // Inicialización de la comunicación serial para la conexión con Python o monitoreo
   Serial.begin(9600);  
   
   pinMode(echo, INPUT); // Establecemos pin 5 como entrada de datos o pin de lectura
@@ -26,33 +24,42 @@ void setup() {
 }
 
 void loop() {
-
-
+  // Verifica si hay datos disponibles en el puerto serial
   if (Serial.available() > 0) {
-    char c = Serial.read();
-    if (c == 'a')
+    char c = Serial.read(); // Lee el carácter recibido
+    if (c == 'a') // Si recibe 'a', enciende la bomba
       digitalWrite(rele, LOW);
-
-    if (c == 'q')
+    if (c == 'q') // Si recibe 'q', apaga la bomba
       digitalWrite(rele, HIGH);
   }
 
+  // Recuperamos la distancia que calculamos con el sensor ultrasónico
   int distance = sonar();
 
+  // Si la distancia es mayor o igual a 13 cm, encendemos el LED rojo y apagamos los demás
+  // Esto indica que el recipiente está casi vacío
   if(distance >= 13){
     digitalWrite(green, LOW);  
     digitalWrite(yellow, LOW);
     digitalWrite(red, HIGH);
-
-  }else if(distance >= 6){
+  }
+  // Si la distancia está entre 6 y 12 cm, encendemos el LED amarillo y apagamos los demás
+  // Esto indica que el recipiente está a la mitad
+  else if(distance >= 6){
     digitalWrite(green, LOW);  
     digitalWrite(yellow, HIGH);
     digitalWrite(red, LOW);
-  }else if(distance >= 2){
+  }
+  // Si la distancia está entre 2 y 5 cm, encendemos el LED verde y apagamos los demás
+  // Esto indica que el recipiente está casi lleno
+  else if(distance >= 2){
     digitalWrite(green, HIGH);  
     digitalWrite(yellow, LOW);
     digitalWrite(red, LOW);
-  }else{
+  }
+  // Si la distancia es menor a 2 cm, activamos el relé y encendemos el LED verde
+  // La activación del rele hace que la bomba se apague, así simulamos un apagado de emergencia
+  else{
     digitalWrite(rele, HIGH);  
     digitalWrite(green, HIGH);  
     digitalWrite(yellow, LOW);
@@ -61,24 +68,24 @@ void loop() {
   
 }
 
+// Función para medir la distancia con el sensor ultrasónico
 int sonar(){
   long time; // Variable para guardar el tiempo 
   int distance; // Variable para guardar la distancia calculada
 
+  // Genera un pulso de activación en el sensor ultrasónico
   digitalWrite(trig, HIGH);
   delayMicroseconds(20);
   digitalWrite(trig, LOW);
 
+  // Mide el tiempo que tarda en regresar el eco
   time = pulseIn(echo, HIGH);
+
+  // Calcula la distancia en cm (tiempo * velocidad del sonido / 2)
   distance = time * 0.0344 / 2;
 
-  /*
-  Serial.print("Tiempo: ");
-  Serial.println(time);
-  Serial.print("Distancia: ");
-  */
   delay(100);
-  //Serial.println(distance);
   
+  // Retorna la distancia calculada
   return distance;
 }
